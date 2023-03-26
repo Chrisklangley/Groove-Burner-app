@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const { seedDB } = require("./seed.js");
+const { login, register } = require("./controller");
 // const { getAccessToken } = require("./getToken");
 
 const accessToken = process.env.ACCESS_TOKEN;
@@ -15,6 +17,9 @@ const PORT = process.env.PORT || 4838;
 app.get("/token", (req, res) => {
   res.status(200).send(accessToken);
 });
+app.post("/seed", seedDB);
+app.post("/login", login);
+app.post("/register", register);
 
 // app.get("/access-token", async (req, res) => {
 //   try {
