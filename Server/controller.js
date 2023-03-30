@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { CONNECTION_STRING, SECRET } = process.env;
+const { CONNECTION_STRING, SECRET, CLIENT_ID, CLIENT_SECRET } = process.env;
 const Sequelize = require("sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -13,50 +13,60 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
   },
 });
 
-const login = async (req, res) => {
+const login = (req, res) => {
   const { username, email, password } = req.body;
 
   const payload = { username, email };
 
   const token = jwt.sign(payload, SECRET);
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(password, salt);
 
-  try {
-    const hashedPass = await bcrypt.hash(password, 10);
-
-    const [results, metadata] = await sequelize.query(`
-    SELECT user_name, password
+  sequelize
+    .query(
+      `
+    SELECT email, password
     FROM users
-    WHERE (user_name = '${email}' AND password= '${hashedPass}' );`);
+    WHERE email = '${email}' AND password = '${hash}';`
+    )
+    .then((user) => {
+      user = user[0][0];
+      if (!user) {
+        return res.status(401).send("User not found");
+      }
 
-    console.log(results);
-
-    res.json({ token, email });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message });
-  }
+      res.json({ token, email });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
 };
 
-const register = async (req, res) => {
+const register = (req, res) => {
   const { username, email, password } = req.body;
 
   const payload = { username, email };
 
   const token = jwt.sign(payload, SECRET);
-  try {
-    const hashedPass = await bcrypt.hash(password, 10);
 
-    await sequelize.query(
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(password, salt);
+
+  sequelize
+    .query(
       `
   INSERT INTO users(user_name, email, password)
-  VALUES('${username}', '${email}', '${hashedPass}');
+  VALUES('${username}', '${email}', '${hash}');
   `
-    );
-    res.json({ token, email });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
+    )
+    .then((result) => {
+      res.json({ token, email });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    });
 };
 
 module.exports = {

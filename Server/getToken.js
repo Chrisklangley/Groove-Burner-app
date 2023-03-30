@@ -1,30 +1,29 @@
 require("dotenv").config();
-const axios = require("axios");
 
-const getAccessToken = async (req, res) => {
-//   const CLIENT_ID = process.env.CLIENT_ID;
-//   const CLIENT_SECRET = process.env.CLIENT_SECRET;
-//   await axios({
-//     method: "post",
-//     url: "https://accounts.spotify.com/api/token",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       Authorization:
-//         "Basic " +
-//         Buffer.from(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
-//     },
-//     params: {
-//       grant_type: "client_credentials",
-//     },
-//   })
-//     .then((response) => {
-//       let accessToken = response.data.access_token;
+const getAccessToken = (req, res) => {
+  const CLIENT_ID = process.env.CLIENT_ID;
+  const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-//       res.send(accessToken);
-//     })
-//     .catch((err) => console.error(err));
-// };
+  var authOptions = {
+    url: "https://accounts.spotify.com/api/token",
+    headers: {
+      Authorization:
+        "Basic " +
+        new Buffer.from(CLIENT_ID + ":" + CLIENT_SECRET).toString("base64"),
+    },
+    form: {
+      grant_type: "client_credentials",
+    },
+    json: true,
+  };
 
+  request.post(authOptions, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      let token = body.access_token;
+    }
+  });
+};
 module.exports = {
   getAccessToken,
+  token,
 };
