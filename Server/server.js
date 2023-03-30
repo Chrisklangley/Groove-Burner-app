@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const spotifyWebApi = require("spotify-web-api-node");
 
 const { seedDB } = require("./seed.js");
@@ -12,17 +13,38 @@ const redirect_uri = process.env.REDIRECT_URI;
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.post("/seed", seedDB);
 app.post("/login", login);
 app.post("/register", register);
 
+app.post("/refresh", (req, res) => {
+  const refreshToken = req.body.refresh_token;
+  const spotifyApi = new spotifyWebApi({
+    clientId: "853fb1a0f68a449c9da26111a96caf27",
+    clientSecret: "e165552346b24a4a86e02b99cf3cf595",
+    redirectUri: "http://localhost:3000/home",
+    refreshToken,
+  });
+
+  spotifyApi
+    .refreshAccessToken()
+    .then((data) => {
+      console.log(data.body);
+
+      spotifyApi.setAccessToken(data.body["access_token"]);
+    })
+    .catch(() => {
+      res.sendStatus(400);
+    });
+});
 app.post("/auth", (req, res) => {
   const code = req.body.code;
   const spotifyApi = new spotifyWebApi({
-    redirectUri: redirect_uri,
-    clientId: client_id,
-    clientSecret: client_secret,
+    clientId: "853fb1a0f68a449c9da26111a96caf27",
+    clientSecret: "e165552346b24a4a86e02b99cf3cf595",
+    redirectUri: "http://localhost:3000/home",
   });
 
   spotifyApi
@@ -34,7 +56,8 @@ app.post("/auth", (req, res) => {
         expiresIn: data.body.expires_in,
       });
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.sendStatus(400);
     });
 });
