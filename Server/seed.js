@@ -16,12 +16,21 @@ const seedDB = (req, res) => {
     .query(
       `
       DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS grovelist;
 
     CREATE TABLE users(
         user_id SERIAL PRIMARY KEY,
         user_name VARCHAR(400) NOT NULL,
         email VARCHAR(400) NOT NULL,
         password VARCHAR(400) NOT NULL
+    );
+    CREATE TABLE grovelist(
+      grovelist_id SERIAL PRIMARY KEY,
+      grovelist_name VARCHAR(400) NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(user_id) 
+      prices INT NOT Null
+
+
     );
 
     `
