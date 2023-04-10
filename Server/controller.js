@@ -61,7 +61,7 @@ const register = (req, res) => {
   `
     )
     .then((result) => {
-      res.json({ token, email });
+      res.json({ token, email, username });
     })
     .catch((err) => {
       console.error(err);
