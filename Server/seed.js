@@ -15,23 +15,23 @@ const seedDB = (req, res) => {
   sequelize
     .query(
       `
+      DROP TABLE IF EXISTS groovelist;
       DROP TABLE IF EXISTS users;
-      DROP TABLE IF EXISTS grovelist;
 
-    CREATE TABLE users(
+      CREATE TABLE users(
         user_id SERIAL PRIMARY KEY,
         user_name VARCHAR(400) NOT NULL,
-        email VARCHAR(400) NOT NULL,
+        email VARCHAR(400) UNIQUE, -- Make email a unique column
         password VARCHAR(400) NOT NULL
     );
-    CREATE TABLE grovelist(
-      grovelist_id SERIAL PRIMARY KEY,
-      grovelist_name VARCHAR(400) NOT NULL,
-      FOREIGN KEY (user_id) REFERENCES users(user_id) 
-      prices INT NOT Null
 
-
-    );
+    CREATE TABLE groovelist (
+      groovelist_id SERIAL PRIMARY KEY,
+      groovelist_song VARCHAR(400),
+      price INT,
+      user_email VARCHAR(400), 
+      FOREIGN KEY (user_email) REFERENCES users(email)
+  );
 
     `
     )
