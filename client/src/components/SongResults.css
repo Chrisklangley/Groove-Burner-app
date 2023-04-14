@@ -1,0 +1,28 @@
+.result-content {
+  margin: 10px 5px 5px 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Search-cover-art {
+  width: 50px;
+  height: 50px;
+  /* margin-top: 5px; */
+  margin: 5px;
+  border-radius: 4px;
+
+  align-self: center;
+}
+
+.add-search-btn {
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: larger;
+}
+
+.add-search-btn:hover {
+  background-color: #7699d4;
+}

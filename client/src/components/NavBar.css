@@ -1,0 +1,29 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+li {
+  list-style: none;
+  margin-right: 10px;
+  border-right: 1px solid black;
+  padding: 5px;
+  height: 15px;
+}
+li:hover {
+  color: #8c031a;
+}
+
+.main-title {
+  font-size: 30px;
+  margin-left: 10px;
+}
+.main-title:hover {
+  color: #8c031a;
+}

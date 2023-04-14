@@ -1,0 +1,28 @@
+.home-title {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+.glist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 45vw;
+  margin: 5px;
+}
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 90px;
+}
+.subtitle {
+  font-size: 30px;
+}
+
+.directions {
+  font-size: 15px;
+}

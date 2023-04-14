@@ -1,0 +1,48 @@
+.grovelist-main {
+  /* margin-bottom: 900px;/  */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.groovelist-container {
+  width: 590px;
+  height: 200px;
+  border: solid rgb(0, 0, 0) 1px;
+  margin-right: 80px;
+  position: fixed;
+  top: 350px;
+  border-radius: 20px;
+  background-color: white;
+  overflow: scroll;
+}
+
+.groovelist-container h3 {
+  text-align: center;
+  font-size: 25px;
+}
+.groovelist-container p {
+  font-size: 20px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.groovelist-container button {
+  border-radius: 50%;
+  border: none;
+  width: 20px;
+  height: 20px;
+  font-size: 30;
+  margin-left: 5px;
+  font-weight: bolder;
+}
+.groovelist-container button:hover {
+  background-color: #8c031a;
+}
+
+.groovelist-container .heading {
+  background-color: #a9927d;
+}
