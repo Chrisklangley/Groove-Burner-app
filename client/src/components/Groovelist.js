@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 function Groovelist({ songs }) {
   const [songList, setSongList] = useState([]);
+  const [total, setTotal] = useState(null);
 
   let authStateName = Cookies.get("_auth_state");
   const userName = JSON.parse(authStateName).name;
@@ -15,12 +16,33 @@ function Groovelist({ songs }) {
     email,
   };
 
+  const getTotal = () => {
+    axios
+      .get(`http://localhost:4838/getTotal/${email}`)
+      .then((res) => {
+        setTotal(res.data.sum);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4838/getTotal/${email}`)
+      .then((res) => {
+        setTotal(res.data.sum);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [songList]);
+
   useEffect(() => {
     axios
       .post("http://localhost:4838/getSongs", body)
       .then((res) => {
         setSongList(res.data);
-        console.log(songList);
       })
       .catch((err) => console.error(err));
   }, [songs]);
@@ -41,7 +63,7 @@ function Groovelist({ songs }) {
   const results = songList.map((song) => {
     return (
       <p key={song.groovelist_id} data-id={song.groovelist_id}>
-        {song.length}. {song.groovelist_song}
+        {song.groovelist_song}
         <button onClick={deleteSong}>X</button>
       </p>
     );
@@ -52,7 +74,12 @@ function Groovelist({ songs }) {
       {songList.length !== 0 ? (
         <div className="groovelist-container">
           <div className="heading">
-            <h3>{userName}'s Groovelist</h3>
+            <h3>
+              {userName}'s Groovelist{" "}
+              <h5 className="est-total" onClick={getTotal}>
+                EST total:$ {total}{" "}
+              </h5>
+            </h3>
           </div>
           {results}
         </div>

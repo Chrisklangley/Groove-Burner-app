@@ -13,6 +13,24 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     },
   },
 });
+const getTotal = (req, res) => {
+  const { email } = req.params;
+
+  sequelize
+    .query(
+      `SELECT SUM(price)
+    FROM groovelist
+    WHERE user_email = '${email}';
+    `
+    )
+    .then((sum) => {
+      const total = sum[0][0];
+      res.status(200).send(total);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 const deleteSong = (req, res) => {
   const { songId, email } = req.params;
@@ -46,7 +64,8 @@ const getSongs = (req, res) => {
     .query(
       `SELECT  groovelist_id, groovelist_song
   From groovelist 
-  WHERE user_email = '${email}'`
+  WHERE user_email = '${email}';
+  `
     )
     .then((songs) => {
       const songList = songs[0];
@@ -60,14 +79,12 @@ const getSongs = (req, res) => {
 const addSong = (req, res) => {
   const { clicked, email } = req.body;
 
-  console.log(email);
-
   sequelize
     .query(
       `
     
     INSERT INTO groovelist(groovelist_song, price, user_email)
-      VALUES('${clicked}', 2, '${email}');
+      VALUES('${clicked}', 2.25, '${email}');
     `
     )
     .then(() => {
@@ -139,4 +156,5 @@ module.exports = {
   addSong,
   getSongs,
   deleteSong,
+  getTotal,
 };

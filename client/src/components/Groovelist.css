@@ -10,7 +10,7 @@
   width: 590px;
   height: 200px;
   border: solid rgb(0, 0, 0) 1px;
-  margin-right: 80px;
+  margin-right: 0px;
   position: fixed;
   top: 350px;
   border-radius: 20px;
@@ -45,4 +45,11 @@
 
 .groovelist-container .heading {
   background-color: #a9927d;
+}
+
+.est-total {
+  display: inline-block;
+  margin-left: 410px;
+  /* margin-top: 60px; */
+  font-size: 25px;
 }

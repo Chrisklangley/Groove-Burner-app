@@ -28,7 +28,7 @@ const seedDB = (req, res) => {
     CREATE TABLE groovelist (
       groovelist_id SERIAL PRIMARY KEY,
       groovelist_song VARCHAR(400),
-      price INT,
+      price DECIMAL,
       user_email VARCHAR(400), 
       FOREIGN KEY (user_email) REFERENCES users(email)
   );

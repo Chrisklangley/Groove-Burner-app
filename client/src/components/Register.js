@@ -45,7 +45,7 @@ function Register() {
     };
     const URL = "http://localhost:4838";
 
-    axios
+    await axios
       .post(triggerSignup ? `${URL}/login` : `${URL}/register`, body)
       .then((res) => {
         console.log(res.data);
@@ -59,7 +59,6 @@ function Register() {
             name: res.data.username,
           },
         });
-        console.log(isAuthenticated());
         setTimeout(() => {
           if (isAuthenticated()) {
             navigate("/home");
@@ -67,7 +66,7 @@ function Register() {
           } else {
             setErrorMessage(false);
           }
-        }, 1000);
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);

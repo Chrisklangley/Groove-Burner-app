@@ -7,9 +7,13 @@
   margin-bottom: -12px;
   justify-content: center;
 }
-
 .search-bar {
-  /* margin-right: 400px; */
+  margin-left: 90px;
+}
+.title-search {
+  margin-left: 680px;
+  font-size: 30px;
+  margin-top: 30px;
 }
 .search-bar input {
   height: 15px;
@@ -27,17 +31,13 @@
 .result-container {
   background-color: rgb(255, 255, 255);
   height: auto;
-
+  position: relative;
   border-radius: 4px;
-  margin-left: 625px;
+  margin-left: 669px;
   width: 520px;
 
   height: 150px;
   display: flex;
   flex-direction: column;
   overflow: scroll;
-}
-
-.title-search {
-  font-size: 30px;
 }

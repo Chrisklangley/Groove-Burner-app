@@ -10,18 +10,20 @@ const {
   addSong,
   getSongs,
   deleteSong,
+  getTotal,
 } = require("./controller");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-
+app.get("/getTotal/:email", getTotal);
 app.post("/getSongs", getSongs);
 app.post("/seed", seedDB);
 app.post("/login", login);
 app.post("/register", register);
 app.post("/addSong", addSong);
+
 app.delete("/deleteSong/:songId/:email", deleteSong);
 
 const PORT = process.env.PORT || 4838;
