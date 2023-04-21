@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Groovelist.css";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 function Groovelist({ songs }) {
   const [songList, setSongList] = useState([]);
   const [total, setTotal] = useState(null);
+  const navigate = useNavigate();
 
   let authStateName = Cookies.get("_auth_state");
   const userName = JSON.parse(authStateName).name;
@@ -74,13 +76,15 @@ function Groovelist({ songs }) {
       {songList.length !== 0 ? (
         <div className="groovelist-container">
           <div className="heading">
-            <h3>
-              {userName}'s Groovelist{" "}
+            <h3>{userName}'s Groovelist </h3>
+            <div className="total-submit">
               <h5 className="est-total" onClick={getTotal}>
-                EST total:$ {total}{" "}
+                EST total:$ {total}
               </h5>
-            </h3>
+              <button onClick={() => navigate("/createCover")}>submit</button>
+            </div>
           </div>
+
           {results}
         </div>
       ) : null}

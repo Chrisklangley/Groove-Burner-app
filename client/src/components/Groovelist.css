@@ -48,8 +48,25 @@
 }
 
 .est-total {
-  display: inline-block;
-  margin-left: 410px;
-  /* margin-top: 60px; */
+  /* display: inline-block; */
+  margin-right: 5px;
   font-size: 25px;
+}
+
+.total-submit {
+  display: flex;
+  flex-direction: column;
+  float: right;
+}
+
+.total-submit button {
+  border: solid rgb(0, 0, 0) 1px;
+  width: 80px;
+  height: 30px;
+  border-radius: 6px;
+  margin-left: 20px;
+}
+
+.total-submit button:hover {
+  background-color: #44bba4;
 }

@@ -22,7 +22,7 @@ function SearchBar() {
       numberOfTopResults: "5",
     },
     headers: {
-      "X-RapidAPI-Key": "e09bb0cef0mshdc6e1597af3167cp10fd05jsn41f2cd9f8081",
+      "X-RapidAPI-Key": "74233648d1msha948e959543800ep130f18jsn35b79b171aee",
       "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
     },
   };

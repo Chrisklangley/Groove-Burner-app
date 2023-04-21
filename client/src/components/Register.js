@@ -50,6 +50,15 @@ function Register() {
       .then((res) => {
         console.log(res.data);
 
+        setTimeout(() => {
+          if (isAuthenticated()) {
+            navigate("/home");
+            setErrorMessage(true);
+          } else {
+            setErrorMessage(false);
+          }
+        }, 2000);
+
         signIn({
           token: res.data.token,
           expiresIn: 3600,
@@ -59,14 +68,6 @@ function Register() {
             name: res.data.username,
           },
         });
-        setTimeout(() => {
-          if (isAuthenticated()) {
-            navigate("/home");
-            setErrorMessage(true);
-          } else {
-            setErrorMessage(false);
-          }
-        }, 2000);
       })
       .catch((error) => {
         console.log(error);

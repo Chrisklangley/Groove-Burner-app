@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./Homepage.css";
 import PlaylistCard from "./PlaylistCard";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 function Homepage() {
   const [playlistData, setPlaylistData] = useState([]);
+  const [genre, setGenre] = useState("vibes");
+
   const options = {
     method: "GET",
     url: "https://spotify23.p.rapidapi.com/search/",
     params: {
-      q: "vibes",
+      q: genre,
       type: "playlists",
       offset: "0",
       limit: "9",
       numberOfTopResults: "5",
     },
     headers: {
-      "X-RapidAPI-Key": "e09bb0cef0mshdc6e1597af3167cp10fd05jsn41f2cd9f8081",
+      "X-RapidAPI-Key": "74233648d1msha948e959543800ep130f18jsn35b79b171aee",
       "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
     },
   };
+
   let authState = Cookies.get("_auth_state");
   const userName = JSON.parse(authState).name;
 
@@ -35,7 +38,7 @@ function Homepage() {
 
   useEffect(() => {
     getPlaylist();
-  }, []);
+  }, [genre]);
 
   return (
     <div className="homepage">
@@ -57,6 +60,16 @@ function Homepage() {
             );
           })}
         </div>
+        <form action="">
+          <select name="genre" id="" onChange={(e) => setGenre(e.target.value)}>
+            <option value="pop">Pop</option>
+            <option value="Hip hop">Hip</option>
+            <option value="R&B/soul">R&B/soul</option>
+            <option value="Electronic/dance">Electronic/dance</option>
+            <option value="Jazz">Jazz</option>
+            <option value="Classical">Classical</option>
+          </select>
+        </form>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ const { CONNECTION_STRING, SECRET, CLIENT_ID, CLIENT_SECRET } = process.env;
 const Sequelize = require("sequelize");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { response } = require("express");
+const cloudinary = require("./Utils/cloudinary");
 
 const sequelize = new Sequelize(CONNECTION_STRING, {
   dialect: "postgres",
@@ -13,6 +13,44 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     },
   },
 });
+
+const addCover = async (req, res) => {
+  const { title, email } = req.params;
+  console.log(title, email);
+
+  const addDetails = (url) => {
+    sequelize
+      .query(
+        `
+        CREATE TABLE groovelistInfo(
+          groovelistInfo_id SERIAL PRIMARY KEY,
+          groovelist_title VARCHAR(400),
+          groovelist_img VARCHAR(400),
+          user_email VARCHAR(400) REFERENCES users(email)
+        );
+
+  INSERT INTO groovelistInfo (groovelist_title, groovelist_img,  user_email)
+  VALUES('${title}', '${url}','${email}');
+
+  `
+      )
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  try {
+    const uploaderResponse = await cloudinary.uploader.upload(req.body.data, {
+      folder: "newFolder",
+    });
+    const imgUrl = uploaderResponse.url;
+    addDetails(imgUrl);
+  } catch (error) {}
+};
+
 const getTotal = (req, res) => {
   const { email } = req.params;
 
@@ -85,6 +123,8 @@ const addSong = (req, res) => {
     
     INSERT INTO groovelist(groovelist_song, price, user_email)
       VALUES('${clicked}', 2.25, '${email}');
+
+
     `
     )
     .then(() => {
@@ -157,4 +197,5 @@ module.exports = {
   getSongs,
   deleteSong,
   getTotal,
+  addCover,
 };
