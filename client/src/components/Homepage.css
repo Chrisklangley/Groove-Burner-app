@@ -26,3 +26,19 @@
 .directions {
   font-size: 15px;
 }
+
+.genre-change {
+  /* position: relative; */
+  /* border: solid red 1px; */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: end;
+  margin-right: 400px;
+  font-size: 20px;
+}
+
+.genre-change select {
+  height: 30px;
+}

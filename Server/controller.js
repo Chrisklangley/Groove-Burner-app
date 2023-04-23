@@ -22,12 +22,7 @@ const addCover = async (req, res) => {
     sequelize
       .query(
         `
-        CREATE TABLE groovelistInfo(
-          groovelistInfo_id SERIAL PRIMARY KEY,
-          groovelist_title VARCHAR(400),
-          groovelist_img VARCHAR(400),
-          user_email VARCHAR(400) REFERENCES users(email)
-        );
+       
 
   INSERT INTO groovelistInfo (groovelist_title, groovelist_img,  user_email)
   VALUES('${title}', '${url}','${email}');

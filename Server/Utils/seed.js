@@ -15,6 +15,7 @@ const seedDB = (req, res) => {
   sequelize
     .query(
       `
+      DROP TABLE IF EXISTS  groovelistInfo;
       DROP TABLE IF EXISTS groovelist;
       DROP TABLE IF EXISTS users;
 
@@ -31,6 +32,13 @@ const seedDB = (req, res) => {
       price DECIMAL,
       user_email VARCHAR(400), 
       FOREIGN KEY (user_email) REFERENCES users(email)
+  );
+
+  CREATE TABLE groovelistInfo(
+    groovelistInfo_id SERIAL PRIMARY KEY,
+    groovelist_title VARCHAR(400),
+    groovelist_img VARCHAR(400),
+    user_email VARCHAR(400) 
   );
 
     `

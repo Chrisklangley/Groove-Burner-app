@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 function CreateCover() {
   const [fileInputState, setFileInputChange] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [title, setTitle] = useState("");
+  const navigate = useNavigate();
 
   let authState = Cookies.get("_auth_state");
   let email = JSON.parse(authState).email;
@@ -39,6 +41,7 @@ function CreateCover() {
         }
       );
       console.log(response);
+      navigate("/finalCover");
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +65,7 @@ function CreateCover() {
           value={fileInputState}
           className="form-input"
         />
-        <button className="cover-submit">submit</button>
+        <button className="cover-submit">add cover Art</button>
       </form>
       {previewSource && (
         <img

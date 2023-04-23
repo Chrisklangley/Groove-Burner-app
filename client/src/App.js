@@ -6,7 +6,8 @@ import NavBar from "./components/NavBar";
 import Register from "./components/Register";
 import CreateOrder from "./components/CreateOrder";
 import CreateCover from "./components/CreateCover";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import DisplayFinalCover from "./components/DisplayFinalCover";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <Route path="/groovelist" element={<SearchBar />} />
 
         <Route path="/createCover" element={<CreateCover />} />
-
         <Route path="/createOrder" element={<CreateOrder />} />
+        <Route path="/finalCover" element={<DisplayFinalCover />} />
       </Routes>
     </div>
   );

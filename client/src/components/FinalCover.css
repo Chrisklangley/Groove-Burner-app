@@ -1,0 +1,54 @@
+.final-title {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 60px;
+}
+
+.your-grooveList {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.your-cover,
+.your-tracklist {
+  /* border: 1px solid red; */
+  height: 300px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  image-rendering: auto;
+  position: relative;
+  background-color: white;
+  box-shadow: 2px 2px 5px -4px rgba(0, 0, 0, 0.75);
+}
+
+.your-cover img {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin: auto;
+  filter: brightness(45%);
+}
+
+.your-cover h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 50px;
+  font-size: 30px;
+
+  color: white;
+}
+
+.your-tracklist h3 {
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  margin-top: 5px;
+}
