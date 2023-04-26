@@ -14,6 +14,43 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
   },
 });
 
+const getCover = (req, res) => {
+  const { email } = req.params;
+  sequelize
+    .query(
+      `
+  SELECT groovelist_title, groovelist_img
+  FROM groovelistInfo
+  WHERE user_email = '${email}';
+
+
+  `
+    )
+    .then((user) => {
+      const content = user[0][0];
+      res.status(200).send(content);
+    })
+    .catch((err) => console.log(err));
+};
+
+const getTrackList = (req, res) => {
+  const { email } = req.params;
+  sequelize
+    .query(
+      `SELECT  groovelist_id, groovelist_song
+  From groovelist 
+  WHERE user_email = '${email}';
+  `
+    )
+    .then((songs) => {
+      const songList = songs[0];
+      res.status(200).send(songList);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 const addCover = async (req, res) => {
   const { title, email } = req.params;
   console.log(title, email);
@@ -193,4 +230,6 @@ module.exports = {
   deleteSong,
   getTotal,
   addCover,
+  getCover,
+  getTrackList,
 };

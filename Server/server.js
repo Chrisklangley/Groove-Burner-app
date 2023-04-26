@@ -12,6 +12,8 @@ const {
   deleteSong,
   getTotal,
   addCover,
+  getCover,
+  getTrackList,
 } = require("./controller");
 const app = express();
 app.use(bodyParser.json({ limit: "60mb" }));
@@ -22,6 +24,9 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 app.get("/getTotal/:email", getTotal);
+app.get("/getCover/:email", getCover);
+app.get("/getCover/:email", getCover);
+app.get("/getTrackList/:email", getTrackList);
 
 app.post("/getSongs", getSongs);
 app.post("/seed", seedDB);

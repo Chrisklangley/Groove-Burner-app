@@ -30,6 +30,7 @@ function Groovelist({ songs }) {
   };
 
   useEffect(() => {
+    getTrackList();
     axios
       .get(`http://localhost:4838/getTotal/${email}`)
       .then((res) => {
@@ -48,6 +49,16 @@ function Groovelist({ songs }) {
       })
       .catch((err) => console.error(err));
   }, [songs]);
+
+  const getTrackList = () => {
+    axios
+      .get(`http://localhost:4838/getTrackList/${email}`)
+      .then((res) => {
+        console.log(res.data);
+        setSongList(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   const deleteSong = (e) => {
     const songId = e.target.parentElement.dataset.id;
