@@ -1,9 +1,13 @@
 .main-form-containter {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #f0f0f0;
+  margin-right: 20%;
+}
+.main-form-containter h1 {
+  font-size: 80px;
 }
 
 .form-containter {

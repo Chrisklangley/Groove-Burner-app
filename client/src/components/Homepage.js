@@ -15,7 +15,7 @@ function Homepage() {
       q: genre,
       type: "playlists",
       offset: "0",
-      limit: "9",
+      limit: "12",
       numberOfTopResults: "5",
     },
     headers: {
@@ -53,7 +53,7 @@ function Homepage() {
         <form action="">
           <select name="genre" id="" onChange={(e) => setGenre(e.target.value)}>
             <option value="pop">Pop</option>
-            <option value="Hip hop">Hip</option>
+            <option value="Hip hop">Hip-Hop</option>
             <option value="R&B/soul">R&B/soul</option>
             <option value="Electronic/dance">Electronic/dance</option>
             <option value="Jazz">Jazz</option>

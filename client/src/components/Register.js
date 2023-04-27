@@ -72,6 +72,9 @@ function Register() {
 
   return (
     <div className="main-form-containter">
+      <h1>
+        "Find your rhythm <br /> with Groovelist"
+      </h1>
       <div className="form-containter">
         <form action="" className="form" onSubmit={submitHandler}>
           <input
