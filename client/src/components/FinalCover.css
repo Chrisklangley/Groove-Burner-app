@@ -41,7 +41,7 @@
   text-align: center;
   padding: 10px;
   margin-top: 50px;
-  font-size: 30px;
+  font-size: 60px;
 
   color: white;
 }
@@ -56,4 +56,20 @@
 .final-songs {
   margin-left: 5px;
   margin-bottom: 10px;
+}
+.logOut {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.logOut button {
+  background-color: #a9927d;
+  width: 150px;
+  height: 50px;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.logOut button:hover {
+  background-color: #8c031a;
 }

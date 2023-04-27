@@ -92,7 +92,9 @@ function Groovelist({ songs }) {
               <h5 className="est-total" onClick={getTotal}>
                 EST total:$ {total}
               </h5>
-              <button onClick={() => navigate("/createCover")}>submit</button>
+              <button onClick={() => navigate("/createCover")}>
+                add songs
+              </button>
             </div>
           </div>
 

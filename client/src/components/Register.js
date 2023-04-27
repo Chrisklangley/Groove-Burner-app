@@ -45,19 +45,10 @@ function Register() {
     };
     const URL = "http://localhost:4838";
 
-    await axios
+    axios
       .post(triggerSignup ? `${URL}/login` : `${URL}/register`, body)
       .then((res) => {
         console.log(res.data);
-
-        setTimeout(() => {
-          if (isAuthenticated()) {
-            navigate("/home");
-            setErrorMessage(true);
-          } else {
-            setErrorMessage(false);
-          }
-        }, 2000);
 
         signIn({
           token: res.data.token,
@@ -69,9 +60,13 @@ function Register() {
           },
         });
       })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/home");
+        }, 2000);
+      })
       .catch((error) => {
         console.log(error);
-        setErrorMessage(false);
       });
   };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import "./CreateCover.css";
 
 function CreateCover() {
   const [fileInputState, setFileInputChange] = useState("");
@@ -31,6 +32,7 @@ function CreateCover() {
   };
 
   const uploadImage = async (base64EncodedImage) => {
+    navigate("/finalCover");
     try {
       const response = await fetch(
         `http://localhost:4838/addCover/Title/${title}/${email}`,
@@ -41,37 +43,48 @@ function CreateCover() {
         }
       );
       console.log(response);
-      navigate("/finalCover");
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
-      <h1>Upload</h1>
-      <form onSubmit={handleSubmitFile}>
+    <div className="cover-main">
+      <h1 className="cover-title">
+        Name your groovelist and upload your cover art
+      </h1>
+      <form onSubmit={handleSubmitFile} className="cover-form">
         <input
+          className="cover-input"
           type="text"
           name="albumName"
           id=""
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
-          type="file"
-          name="image"
-          onChange={handleFileInputChange}
-          value={fileInputState}
-          className="form-input"
-        />
-        <button className="cover-submit">add cover Art</button>
+        <div>
+          <input
+            type="file"
+            name="image"
+            title="somedmd"
+            onChange={handleFileInputChange}
+            value={fileInputState}
+            className="form-input"
+          />
+          <button className="cover-submit">add cover art</button>
+        </div>
       </form>
       {previewSource && (
         <img
           src={previewSource}
           alt=""
-          style={{ height: "300px", width: "300px" }}
+          style={{
+            height: "275px",
+            width: "275px",
+            borderRadius: "6px",
+            marginTop: "5px",
+            marginRight: "10px",
+          }}
         />
       )}
     </div>

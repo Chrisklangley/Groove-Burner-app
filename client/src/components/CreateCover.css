@@ -1,0 +1,30 @@
+.cover-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+  /* border: solid red 1px; */
+}
+
+.cover-input {
+  width: 300px;
+  margin-left: 0px;
+}
+.cover-title {
+  font-size: 50px;
+}
+
+.form-input {
+  border: none;
+  width: 100px;
+  color: transparent;
+}
+.cover-main button {
+  background-color: #7699d4;
+  width: 150px;
+  border: 1px solid black;
+  color: white;
+  border-radius: 4px;
+  height: 30px;
+}

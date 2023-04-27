@@ -25,7 +25,8 @@ function Homepage() {
   };
 
   let authState = Cookies.get("_auth_state");
-  const userName = JSON.parse(authState).name;
+  const { name } = JSON.parse(authState) || {};
+  const greeting = name ? `Hello, ${name}!` : "Hello!";
 
   const getPlaylist = async () => {
     try {
@@ -43,8 +44,8 @@ function Homepage() {
   return (
     <div className="homepage">
       <h1 className="home-title">
-        hey {userName}, before we get a groove on lets try find your vibe from
-        one of these awesome curated playlists
+        {greeting} before we get a groove on lets try find your vibe from one of
+        these awesome curated playlists
       </h1>
       <h2 className="subtitle">once you're ready click start a groovelist</h2>
       <div className="genre-change">

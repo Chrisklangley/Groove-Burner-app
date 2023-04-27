@@ -2,11 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./FinalCover.css";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useSignOut } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
 
 function DisplayFinalCover() {
   const [coverArt, setCoverArt] = useState([]);
   const [trackList, setTrackList] = useState([]);
   let [groovelistCount, setgroovelistCount] = useState(1);
+  const signOut = useSignOut();
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    signOut();
+    navigate("/");
+  };
 
   let authState = Cookies.get("_auth_state");
   let email = JSON.parse(authState).email;
@@ -58,6 +67,9 @@ function DisplayFinalCover() {
           <h3>Track List</h3>
           {results}
         </div>
+      </div>
+      <div className="logOut">
+        <button onClick={logOut}>log out</button>
       </div>
     </div>
   );
