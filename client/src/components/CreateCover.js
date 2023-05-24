@@ -32,7 +32,6 @@ function CreateCover() {
   };
 
   const uploadImage = async (base64EncodedImage) => {
-    navigate("/finalCover");
     try {
       const response = await fetch(
         `http://localhost:4838/addCover/Title/${title}/${email}`,
@@ -42,6 +41,7 @@ function CreateCover() {
           headers: { "Content-type": "application/json" },
         }
       );
+      navigate("/finalCover");
       console.log(response);
     } catch (error) {
       console.error(error);
