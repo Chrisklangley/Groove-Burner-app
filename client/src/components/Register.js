@@ -73,7 +73,7 @@ function Register() {
   return (
     <div className="main-form-containter">
       <h1>
-        "Find your rhythm <br /> with Groovelist"
+        "Find your rhythm <br /> with Groove Burner"
       </h1>
       <div className="form-containter">
         <form action="" className="form" onSubmit={submitHandler}>
