@@ -8,17 +8,16 @@ function NavBar() {
   return (
     <div className="navbar-container">
       <h2 className="main-title">Groove Burner</h2>
-      {isAuthenticated() ? (
+      {isAuthenticated() && (
         <ul>
           <li>
-            <Link to="/home">home</Link>
+            <Link to="/home">Home</Link>
           </li>
-
           <li>
-            <Link to="/groovelist">start a Groovelist</Link>
+            <Link to="/groovelist">Start a Groovelist</Link>
           </li>
         </ul>
-      ) : null}
+      )}
     </div>
   );
 }

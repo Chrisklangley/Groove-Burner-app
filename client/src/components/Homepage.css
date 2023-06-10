@@ -1,14 +1,13 @@
 .home-title {
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
+
 .glist {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 45vw;
+  justify-content: center;
   margin: 5px;
 }
 
@@ -17,10 +16,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 90px;
+  margin-bottom: 50px;
 }
+
 .subtitle {
-  font-size: 30px;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .directions {
@@ -28,17 +30,8 @@
 }
 
 .genre-change {
-  /* position: relative; */
-  /* border: solid red 1px; */
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  align-items: end;
-  margin-right: 400px;
-  font-size: 20px;
-}
-
-.genre-change select {
-  height: 30px;
+  align-items: center;
 }

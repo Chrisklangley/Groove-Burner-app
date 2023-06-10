@@ -5,17 +5,17 @@
   justify-content: center;
   align-items: center;
 }
-
 .groovelist-container {
-  width: 590px;
+  width: 600px;
   height: 200px;
-  border: solid rgb(0, 0, 0) 1px;
+  border: 1px solid rgb(0, 0, 0);
   margin-right: 0px;
   position: fixed;
   top: 350px;
   border-radius: 20px;
   background-color: white;
-  overflow: scroll;
+  overflow: auto;
+  padding: 0;
 }
 
 .groovelist-container h3 {
@@ -65,8 +65,12 @@
   height: 30px;
   border-radius: 6px;
   margin-left: 20px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
-
 .total-submit button:hover {
-  background-color: #44bba4;
+  background-color: #01886d;
 }

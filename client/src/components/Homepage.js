@@ -15,7 +15,7 @@ function Homepage() {
       q: genre,
       type: "playlists",
       offset: "0",
-      limit: "12",
+      limit: "20",
       numberOfTopResults: "5",
     },
     headers: {
@@ -44,33 +44,31 @@ function Homepage() {
   return (
     <div className="homepage">
       <h1 className="home-title">
-        {greeting} before we get a groove on lets try find your vibe from one of
-        these awesome curated playlists
+        {greeting} before we get a groove on let's try to find your vibe from
+        one of these awesome curated playlists
       </h1>
-      <h2 className="subtitle">once you're ready click start a groovelist</h2>
+      <h2 className="subtitle">
+        Once you're ready, click "Start a Groovelist"
+      </h2>
       <div className="genre-change">
         <h4>Change the vibe</h4>
-        <form action="">
-          <select name="genre" id="" onChange={(e) => setGenre(e.target.value)}>
-            <option value="pop">Pop</option>
-            <option value="Hip hop">Hip-Hop</option>
-            <option value="R&B/soul">R&B/soul</option>
-            <option value="Electronic/dance">Electronic/dance</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Classical">Classical</option>
-          </select>
-        </form>
+        <select name="genre" id="" onChange={(e) => setGenre(e.target.value)}>
+          <option value="pop">Pop</option>
+          <option value="Hip hop">Hip-Hop</option>
+          <option value="R&B/soul">R&B/soul</option>
+          <option value="Electronic/dance">Electronic/dance</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Classical">Classical</option>
+        </select>
       </div>
 
       <div className="glist-container">
         <div className="glist">
-          {playlistData.map((playlist, i) => {
-            return (
-              <div key={i}>
-                <PlaylistCard playlistData={playlist} />
-              </div>
-            );
-          })}
+          {playlistData.map((playlist, i) => (
+            <div key={i}>
+              <PlaylistCard playlistData={playlist} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
