@@ -1,16 +1,22 @@
 {
+  "homepage": "http://Chrisklangley.github.io/specs-capstone",
   "name": "specs-capstone",
   "version": "1.0.0",
   "description": "",
   "main": "Server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Server/server.js"
+    "start": "node Server/server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "sequelize": "^6.32.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
