@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/Chrisklangley/Specs-Capstone.git",
+  "homepage": "https://github.com/Chrisklangley/Specs-Capstone",
   "name": "client",
   "version": "0.1.0",
   "proxy": "http://localhost:4838",
