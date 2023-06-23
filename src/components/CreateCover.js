@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import "./CreateCover.css";
-// dfbdnsfbnmds
+
 function CreateCover() {
   const [fileInputState, setFileInputChange] = useState("");
   const [previewSource, setPreviewSource] = useState("");
