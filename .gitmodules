@@ -1,0 +1,3 @@
+[submodule "submodules/Specs-Capstone"]
+    path = submodules/Specs-Capstone
+    url = https://github.com/Chrisklangley/Specs-Capstone.git
