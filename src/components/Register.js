@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSignIn, useIsAuthenticated } from "react-auth-kit";
+import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import axios from "axios";
@@ -11,7 +11,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const signIn = useSignIn();
   const navigate = useNavigate();
-  const isAuthenticated = useIsAuthenticated();
+
   const [errorMessage, setErrorMessage] = useState(true);
 
   const validateForm = () => {

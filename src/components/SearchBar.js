@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./SearchBar.css";
 import Groovelist from "./Groovelist";
 import axios from "axios";
-import { useAuthUser } from "react-auth-kit";
+
 import SongResults from "./SongResults";
 
 function SearchBar() {

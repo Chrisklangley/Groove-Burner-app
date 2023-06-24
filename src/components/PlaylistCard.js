@@ -11,7 +11,7 @@ function PlaylistCard({ playlistData }) {
   const url = `https://open.spotify.com/${type}/${encodeURIComponent(id)}`;
 
   return (
-    <a href={url} target="_blank">
+    <a href={url} target="_blank" rel="noreferrer">
       <div className="playlist-card">
         <img
           src={playlistData.data.images.items[0].sources[0].url}
