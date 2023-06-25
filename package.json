@@ -24,7 +24,7 @@
     "zlib": "^1.0.5"
   },
   "scripts": {
-    "start": "react-scripts start --openssl-legacy-provider start",
+    "start": "react-script --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
