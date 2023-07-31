@@ -20,9 +20,9 @@ function Groovelist({ songs }) {
 
   const getTotal = () => {
     axios
-      .get(`http://localhost:4838/getTotal/${email}`)
+      .get(`https://groove-burner-h2ia.onrender.com/getTotal/${email}`)
       .then((res) => {
-        setTotal(res.data.sum);
+        setTotal(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -32,9 +32,10 @@ function Groovelist({ songs }) {
   useEffect(() => {
     getTrackList();
     axios
-      .get(`http://localhost:4838/getTotal/${email}`)
+      .get(`https://groove-burner-h2ia.onrender.com/getTotal/${email}`)
       .then((res) => {
-        setTotal(res.data.sum);
+        setTotal(res.data.total);
+        console.log(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -43,7 +44,7 @@ function Groovelist({ songs }) {
 
   useEffect(() => {
     axios
-      .post("http://localhost:4838/getSongs", body)
+      .post("https://groove-burner-h2ia.onrender.com/getSongs", body)
       .then((res) => {
         setSongList(res.data);
       })
@@ -52,9 +53,8 @@ function Groovelist({ songs }) {
 
   const getTrackList = () => {
     axios
-      .get(`http://localhost:4838/getTrackList/${email}`)
+      .get(`https://groove-burner-h2ia.onrender.com/getTrackList/${email}`)
       .then((res) => {
-        console.log(res.data);
         setSongList(res.data);
       })
       .catch((err) => console.error(err));
@@ -64,7 +64,9 @@ function Groovelist({ songs }) {
     const songId = e.target.parentElement.dataset.id;
 
     axios
-      .delete(`http://localhost:4838/deleteSong/${songId}/${email}`)
+      .delete(
+        `https://groove-burner-h2ia.onrender.com/deleteSong/${songId}/${email}`
+      )
       .then((res) => {
         setSongList(res.data);
       })
@@ -75,8 +77,8 @@ function Groovelist({ songs }) {
 
   const results = songList.map((song) => {
     return (
-      <p key={song.groovelist_id} data-id={song.groovelist_id}>
-        {song.groovelist_song}
+      <p key={song._id} data-id={song._id}>
+        {song.song}
         <button onClick={deleteSong}>X</button>
       </p>
     );

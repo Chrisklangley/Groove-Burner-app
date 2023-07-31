@@ -22,7 +22,7 @@ function SongResults({ songs, setSelected }) {
     };
 
     axios
-      .post("http://localhost:4838/addSong", body)
+      .post("https://groove-burner-h2ia.onrender.com/addSong", body)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

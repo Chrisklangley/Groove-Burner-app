@@ -21,16 +21,17 @@ function DisplayFinalCover() {
   let email = JSON.parse(authState).email;
   const getCoverPlusTitle = () => {
     axios
-      .get(`http://localhost:4838/getCover/${email}`)
+      .get(`https://groove-burner-h2ia.onrender.com/getCover/${email}`)
       .then((res) => {
         setCoverArt(res.data);
+        console.log(coverArt);
       })
       .catch((err) => console.error(err));
   };
 
   const getTrackList = () => {
     axios
-      .get(`http://localhost:4838/getTrackList/${email}`)
+      .get(`https://groove-burner-h2ia.onrender.com/getTrackList/${email}`)
       .then((res) => {
         console.log(res.data);
         setTrackList(res.data);
@@ -46,10 +47,10 @@ function DisplayFinalCover() {
 
   const results = trackList.map((track) => {
     return (
-      <div key={track.groovelist_id}>
+      <div key={track._id}>
         <p className="final-songs">
           {" "}
-          {groovelistCount++} {track.groovelist_song}
+          {groovelistCount++} {track.song}
         </p>
       </div>
     );

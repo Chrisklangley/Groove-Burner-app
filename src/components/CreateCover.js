@@ -34,7 +34,7 @@ function CreateCover() {
   const uploadImage = async (base64EncodedImage) => {
     try {
       const response = await fetch(
-        `http://localhost:4838/addCover/Title/${title}/${email}`,
+        `https://groove-burner-h2ia.onrender.com/addCover/Title/${title}/${email}`,
         {
           method: "POST",
           body: JSON.stringify({ data: base64EncodedImage }),
@@ -42,7 +42,7 @@ function CreateCover() {
         }
       );
       navigate("/finalCover");
-      console.log(response);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
